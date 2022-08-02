@@ -25,11 +25,72 @@ find ---
   find -empty //find empty files (in current dir)
   find -e //find executable files
   find / -maxdepth 2 // how many sub directories deep will look (this ex will look at root and then down 2 directoreis)
+  when you find stuff, you can do stuff with it...
+    find /tmo name core -type f -print | xargs /bin/rm (found in man find)
+    find ./ -iname "*.txt" -print // will find any txt file and prints files names out (will print names even wo print)
+    find ./ -iname "*.txt" -printf "%inode %file\n" //inode is physial location(followed by 'node', where it is stored. This code prints inode number followed by the filename followed by 'ile'
+      same as : find ./ -iname "*.txt" -printf "%i %f\n"
+    find ./ -iname "*.txt" -exec...........................???
+    find ./ -type d // finds any dir in current dir
+    find ./ -type d -exec ls -l {} \; //{} is output of find command, like format for python. exerc will run other code / things. NEED \; to end line in the code
+    
+    
+  how much wood could a wood chuck chuck if a wood chuck could chuck wood?
+  
 mkfifo pipetest creates a new named pipe, dont store anything, only passes through memory
 to use a pipe
   cat chadow | grep student // will cat shadow and look for student, if found then will print line
   named pipe can be used to acess multiple
   pipe is only in terminal
+
+brace expansion (execute miltiple lines of code at once):
+ touch ./find/{1..10}.txt // within the find fir in the current dir, create a 1.txt, 2.txt....9.txt,10.txt
+ touch ./find=/{empty,test,stuff}.txt // same as aboce except makes 3 files with the names in the braces
+ find ./find/ ! -name *.txt // find anything in find that is not a .txt
+ find ./find/ ! -name *.sh -name *txt
+ find ./find/ ! -name #.sh -name 1* // anything that isnt a .sh file and starts with a 1
+ 
+ grep // searches for patterns and prints it (egrep is extended grep)
+-i option ignore case
+-v inverse
+cat /etc/passwd | egrep /home/ // shows every line with '/home/'
+car /etc/passwd | egrap -o /home/ //will onpy print your argument ('/home/')
+cat /etc/passwd | egrep -o "/home.*" // will print out the test after 'home/ as well as home in for the text in the line
+cat /etc/passwd | egrep ":[0-9]{5}:" // finds each time there are 5 numbers ina  row surrounded by colons
+cat /etc/passwd | egrep -n home // I duno, sometrhing about remembering or pasing the results or something
+-C prints lines above and below match
+  cat /etc/shadow | grep /bash -C2
+-A only prints lines after
+  cat /etc/shadow | egrap /bash -A //prints 2 lines after the results as well
+-B prints lines before
+
+
+cut. only affects output by default------------
+  tail /etc/passwd | cut -d: -f1//cut -d: sets delimiter to :, f1 sets that result to f1
+  tail /etc/passwd | cut -d: -f2
+  tail /etc/passwd | cut -d: -f2-
+  tail /etc/passwd | cut -d- -f1- -s  //look through every other field and only find matching and print that line, cut helps filter a search form something
+      -s requires delimiter to be in that lin, wo s it will cut only if in line...
+      
+& ---- sends process to background
+&& --- logical and
+; ---- same as hitting enter and starting enw line , can beused to enter multiple lines
+\ ---- opposite of semicolon, lets you continue typeing command on next line
+! ---- logical not
+|| --- logical or
+() --- presidense operator, group thngs
+> ---- redirector, take output and sent it somewhere, most commonly used for files, overrides
+  echo "testz' > file1.txt
+>> --- append
+
+
+
+file streams (file in 0 (std in), file out 1 (std out), file error 2 (std err))-------------------
+  find /* 2>/dev/null | grep "Permission denied" //take anything that has an error, aka "Permission denied", and send to /dev/null, remember its looking for a std err since 2
+  find /* 1>/dev/null 2> debug.log // way to save std output and std output into 2 standard files
+  
+  
+  
 
 
 CONST VAR
