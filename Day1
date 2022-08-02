@@ -1,0 +1,49 @@
+COMMANDS
+
+touch filename // create a file, manipulate timestamp
+  man touch, then /time can let you find time commands for touch
+  touch -t 200507041200 filename // change file time (modified?) to 4 Jul 2005 12:00
+  touch A1 A2 A3 creates 3 files
+file filename //see what type of file something is, if nothing it int will show empty
+rm //remove file, rmdir //remove dir,    rm A* removes all files that start with A
+echo ~ //shows what home dir is
+whoami //current user
+hostname //name of device logged into
+mv, cp  // move, copy
+ln -s file newfileref// create links to files, like shortcut, type is a symbolic link, work anywhere
+ln file hardlink // greates hard link, will have same contents of file even without original file, only work if on same hard drive
+locate //search database for stuff thats already installed
+whereis man // look for filepaths that have man
+| is pipe, takes whats on left and put into right
+named pipe is a pipe that stays on the system, seperate type of file
+find ---
+  find -name bad //for for case sensitive file with name, will look for exact string unless use *
+  find -iname filename // is not case sensitive
+  find / -name bad //can give file path to start searching
+  find -type (f for file, d for dir, l for sym link, p for named pipe (| is pipe)|| options) -iname bad* // can search for file type
+  find -mtime 2//searches for anything modiified timstamp in 2 days
+  find -empty //find empty files (in current dir)
+  find -e //find executable files
+  find / -maxdepth 2 // how many sub directories deep will look (this ex will look at root and then down 2 directoreis)
+mkfifo pipetest creates a new named pipe, dont store anything, only passes through memory
+to use a pipe
+  cat chadow | grep student // will cat shadow and look for student, if found then will print line
+  named pipe can be used to acess multiple
+  pipe is only in terminal
+
+
+CONST VAR
+//sotred in usr file
+$HOME
+
+FILES
+.bashrc // what current user used.....
+  alias
+  downloaded custom things...
+usr/bin //usually can run
+usr/share //usually shared between users
+
+BLUE = dir
+GRAY = file
+WHITE = sytmbollic link
+GRAY =  = hardlink
