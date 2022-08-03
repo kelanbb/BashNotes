@@ -1,2 +1,41 @@
 COMMANDS
 locate (use update before?)
+
+
+awk # utulity for patern scanning (in a file), 
+***
+  see if contains lines with whatever pattern / specifications. 
+  Scan a file line by line, 
+  split into differnt fields, 
+  match lines,
+  find unmatch stuff,
+  change format or fertain file
+awk '{print}' coffee.txt // prints every line of coffee.txt
+awk '/coffee/ {print}' coffee/txt // prints every line that has /coffee/ string
+awk '{print NR,$0}' coffee.txt // prints coffe.txt with lines numbers
+  $0 represents whole line.....???
+  NR keeps cirrent count of current number for whatever input is, in this case it's $0, whole line numbers
+awk 'NR == 3, NR == 8 {print NR,$0}' coffee.txt  //ptints lines 3 to 8 in NR and shows number lines
+
+tail /etc/passwd | awk -F: '{print $NF}'  //prints last field of etc/passed, fields deliminated by :
+  $NF if last field
+  -F is delimiter, default is space
+tail /etc/passwd | awk -F: '{print $1,$5}' //same as above except prints field 1 and 5 
+tail /etc/passwd | awk -F: 'BEGIN {OFS="#"} {print $1,$2}'
+tail /etc/passwd | awk 'BEGIN {FS="#"} {print $1,$5}'
+  basically alternate way to do line 23
+
+
+sort #used to sort
+  arrage in particulat order
+  options to sort numberical, default alphabetical
+  if number and letter, will sort by number then letter, uppercasfe before lower
+sort befereges.txt //soerts special>numerical>upper>lower
+sort -o beverages2.txt beverages.txt // sort to file, <destination> <source>, sort beverages and save to beverages2
+sort -r beverages.txt //sort reverse
+sort -n beverages.txt //sort with numbers last instead of first
+  -u sort duplicate
+  -m sort in month order if months in file
+sort -nr beverages.txt // sorts with numbers at end in reverse
+sort -k 2 beverages.txt sort by 2nd coumn (2nd word, deliminated by space by default), if none then will be on top of sort
+sort -k 1,3 coffee.txt //will sort by first column first, then will sort by third column ////////////////////////////?>?????????????????????????/
