@@ -100,3 +100,4 @@ if statements:
   7 else
   8    commands
   9 fi
+== (num and string), -eq(num only), -ne, !=, < only words for strings, -gt, -lt, -ge, -le work wit num and string
