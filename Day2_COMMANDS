@@ -1,0 +1,499 @@
+xrdp 
+telnetd 
+student@lin-ops:~/Bash2$ tail /etc/passwd | awk -F: '{print $1,$5}'
+colord colord colour management daemon,,,
+pulse PulseAudio daemon,,,
+geoclue 
+gdm Gnome Display Manager
+ubuntu Ubuntu
+student 
+proftpd 
+ftp 
+xrdp 
+telnetd 
+student@lin-ops:~/Bash2$ date 
+Wed Aug  3 13:11:29 UTC 2022
+student@lin-ops:~/Bash2$ date | awk 'BEGIN {FS="\"} '{print $1,$2,$3}'
+> ^C
+student@lin-ops:~/Bash2$ date | awk 'BEGIN {FS="\"} {print $1,$2,$3}'
+awk: cmd. line:1: BEGIN {FS="\"} {print $1,$2,$3}
+awk: cmd. line:1:           ^ unterminated string
+awk: cmd. line:1: BEGIN {FS="\"} {print $1,$2,$3}
+awk: cmd. line:1:           ^ syntax error
+student@lin-ops:~/Bash2$ tail /etc/passwd | awk -F: '{print $1," and ",$5}'
+colord  and  colord colour management daemon,,,
+pulse  and  PulseAudio daemon,,,
+geoclue  and  
+gdm  and  Gnome Display Manager
+ubuntu  and  Ubuntu
+student  and  
+proftpd  and  
+ftp  and  
+xrdp  and  
+telnetd  and  
+student@lin-ops:~/Bash2$ tail /etc/passwd | awk -F: '{print $0}'
+colord:x:111:116:colord colour management daemon,,,:/var/lib/colord:/usr/sbin/nologin
+pulse:x:112:117:PulseAudio daemon,,,:/var/run/pulse:/usr/sbin/nologin
+geoclue:x:113:119::/var/lib/geoclue:/usr/sbin/nologin
+gdm:x:114:120:Gnome Display Manager:/var/lib/gdm3:/bin/false
+ubuntu:x:1000:1000:Ubuntu:/home/ubuntu:/bin/bash
+student:x:1001:1001::/home/student:/bin/bash
+proftpd:x:115:65534::/run/proftpd:/usr/sbin/nologin
+ftp:x:116:65534::/srv/ftp:/usr/sbin/nologin
+xrdp:x:117:122::/var/run/xrdp:/usr/sbin/nologin
+telnetd:x:118:124::/nonexistent:/usr/sbin/nologin
+student@lin-ops:~/Bash2$ tail /etc/passwd
+colord:x:111:116:colord colour management daemon,,,:/var/lib/colord:/usr/sbin/nologin
+pulse:x:112:117:PulseAudio daemon,,,:/var/run/pulse:/usr/sbin/nologin
+geoclue:x:113:119::/var/lib/geoclue:/usr/sbin/nologin
+gdm:x:114:120:Gnome Display Manager:/var/lib/gdm3:/bin/false
+ubuntu:x:1000:1000:Ubuntu:/home/ubuntu:/bin/bash
+student:x:1001:1001::/home/student:/bin/bash
+proftpd:x:115:65534::/run/proftpd:/usr/sbin/nologin
+ftp:x:116:65534::/srv/ftp:/usr/sbin/nologin
+xrdp:x:117:122::/var/run/xrdp:/usr/sbin/nologin
+telnetd:x:118:124::/nonexistent:/usr/sbin/nologin
+student@lin-ops:~/Bash2$ tail /etc/passwd | awk -F: '{print $1}'
+colord
+pulse
+geoclue
+gdm
+ubuntu
+student
+proftpd
+ftp
+xrdp
+telnetd
+student@lin-ops:~/Bash2$ ------------------------------------------------------------
+------------------------------------------------------------: command not found
+student@lin-ops:~/Bash2$ 
+student@lin-ops:~/Bash2$ 
+student@lin-ops:~/Bash2$ 
+student@lin-ops:~/Bash2$ 
+student@lin-ops:~/Bash2$ vim beverages.txt
+student@lin-ops:~/Bash2$ sort beverages.txt 
+1sprite
+7wine
+90okra juice
+apple juice
+booze
+chocolate milk 99
+milk
+orange juice
+soda
+tea
+tte
+water
+student@lin-ops:~/Bash2$ vim beverages.txt
+student@lin-ops:~/Bash2$ sort beverages.txt 
+1sprite
+7wine
+90okra juice
+Appletini
+Black coffee
+apple juice
+booze
+cOFFEE
+chocolate milk 99
+latte
+milk
+orange juice
+soda
+tea
+water
+student@lin-ops:~/Bash2$ cat beverages.txt 
+latte
+booze
+tea
+soda
+milk
+water
+orange juice
+apple juice
+1sprite
+7wine
+90okra juice
+chocolate milk 99
+Appletini
+Black coffee
+cOFFEE
+student@lin-ops:~/Bash2$ sort beverages.txt 
+1sprite
+7wine
+90okra juice
+Appletini
+Black coffee
+apple juice
+booze
+cOFFEE
+chocolate milk 99
+latte
+milk
+orange juice
+soda
+tea
+water
+student@lin-ops:~/Bash2$ vim beverages.txt
+student@lin-ops:~/Bash2$ sort beverages.txt 
+1sprite
+7wine
+90okra juice
+Appletini
+Black coffee
+apple juice
+booze
+cOFFEE
+chocolate milk
+chocolate milk 99
+latte
+milk
+orange juice
+soda
+tea
+water
+student@lin-ops:~/Bash2$ vim beverages.txt
+student@lin-ops:~/Bash2$ sort beverages.txt 
+!milk
+***coke
+1sprite
+7wine
+90okra juice
+Appletini
+Black coffee
+apple juice
+booze
+cOFFEE
+chocolate milk
+chocolate milk 99
+latte
+milk
+orange juice
+soda
+tea
+water
+student@lin-ops:~/Bash2$ sort -o beverages2.txt beverages.txt 
+student@lin-ops:~/Bash2$ ls
+beverages.txt  beverages2.txt  coffee.txt
+student@lin-ops:~/Bash2$ cat beverages2.txt 
+!milk
+***coke
+1sprite
+7wine
+90okra juice
+Appletini
+Black coffee
+apple juice
+booze
+cOFFEE
+chocolate milk
+chocolate milk 99
+latte
+milk
+orange juice
+soda
+tea
+water
+student@lin-ops:~/Bash2$ sort -r beverages.txt 
+water
+tea
+soda
+orange juice
+milk
+latte
+chocolate milk 99
+chocolate milk
+cOFFEE
+booze
+apple juice
+Black coffee
+Appletini
+90okra juice
+7wine
+1sprite
+***coke
+!milk
+student@lin-ops:~/Bash2$ sort -nr beverages.txt 
+90okra juice
+7wine
+1sprite
+water
+tea
+soda
+orange juice
+milk
+latte
+chocolate milk 99
+chocolate milk
+cOFFEE
+booze
+apple juice
+Black coffee
+Appletini
+***coke
+!milk
+student@lin-ops:~/Bash2$ sort -n beverages.txt 
+!milk
+***coke
+Appletini
+Black coffee
+apple juice
+booze
+cOFFEE
+chocolate milk
+chocolate milk 99
+latte
+milk
+orange juice
+soda
+tea
+water
+1sprite
+7wine
+90okra juice
+student@lin-ops:~/Bash2$ sort -k 2n beverages
+sort: cannot read: beverages: No such file or directory
+student@lin-ops:~/Bash2$ sort -k 2n beverages.txt 
+!milk
+***coke
+1sprite
+7wine
+90okra juice
+Appletini
+Black coffee
+apple juice
+booze
+cOFFEE
+chocolate milk
+chocolate milk 99
+latte
+milk
+orange juice
+soda
+tea
+water
+student@lin-ops:~/Bash2$ sort -k 2 beverages.txt 
+!milk
+***coke
+1sprite
+7wine
+Appletini
+booze
+cOFFEE
+latte
+milk
+soda
+tea
+water
+Black coffee
+90okra juice
+apple juice
+orange juice
+chocolate milk
+chocolate milk 99
+student@lin-ops:~/Bash2$ ls
+beverages.txt  beverages2.txt  coffee.txt
+student@lin-ops:~/Bash2$ cat coffee.txt 
+ love coffee
+ i love coffee
+ better than tea
+ coffee is good
+ I like coffee in the morning
+ it gives energy
+student@lin-ops:~/Bash2$ sed 's/coffee/Coffee/' coffee.txt 
+ love Coffee
+ i love Coffee
+ better than tea
+ Coffee is good
+ I like Coffee in the morning
+ it gives energy
+student@lin-ops:~/Bash2$ sed 's/coffee/Coffee/g' coffee.txt 
+ love Coffee
+ i love Coffee
+ better than tea
+ Coffee is good
+ I like Coffee in the morning
+ it gives energy
+student@lin-ops:~/Bash2$ sed 's/Coffee/coffee/g' coffee.txt 
+ love coffee
+ i love coffee
+ better than tea
+ coffee is good
+ I like coffee in the morning
+ it gives energy
+student@lin-ops:~/Bash2$ sed '5 s/Coffee/coffee' coffee.txt 
+sed: -e expression #1, char 17: unterminated `s' command
+student@lin-ops:~/Bash2$ sed '5 s/Coffee/coffee' coffee.txt 
+sed: -e expression #1, char 17: unterminated `s' command
+student@lin-ops:~/Bash2$ sed '5 s/coffee/Coffee' coffee.txt 
+sed: -e expression #1, char 17: unterminated `s' command
+student@lin-ops:~/Bash2$ sed '3 s/coffee/Coffee' coffee.txt 
+sed: -e expression #1, char 17: unterminated `s' command
+student@lin-ops:~/Bash2$ sed '$d' coffee.txt 
+ love coffee
+ i love coffee
+ better than tea
+ coffee is good
+ I like coffee in the morning
+student@lin-ops:~/Bash2$ cat coffee.txt 
+ love coffee
+ i love coffee
+ better than tea
+ coffee is good
+ I like coffee in the morning
+ it gives energy
+student@lin-ops:~/Bash2$ echo "Welcome To The Coffee House" | sed 's/\(\b[A-Z]\)/\(\1\)\g'
+sed: -e expression #1, char 22: unterminated `s' command
+student@lin-ops:~/Bash2$ sed 's/coffee/Coffee/g' coffee.txt 
+ love Coffee
+ i love Coffee
+ better than tea
+ Coffee is good
+ I like Coffee in the morning
+ it gives energy
+student@lin-ops:~/Bash2$ cat coffee.txt 
+ love coffee
+ i love coffee
+ better than tea
+ coffee is good
+ I like coffee in the morning
+ it gives energy
+student@lin-ops:~/Bash2$ echo "Welcome To The Coffee House" | sed 's/\(\b[A-Z]\)/\(\1\)\g'
+sed: -e expression #1, char 22: unterminated `s' command
+student@lin-ops:~/Bash2$ echo "Welcome To The Coffee House" | sed 's/\(\b[A-Z]\)/\(\1\)/g'
+(W)elcome (T)o (T)he (C)offee (H)ouse
+student@lin-ops:~/Bash2$ sed 's/coffee/Coffee/g' coffee.txt 
+ love Coffee
+ i love Coffee
+ better than tea
+ Coffee is good
+ I like Coffee in the morning
+ it gives energy
+student@lin-ops:~/Bash2$ sed '3 s/tea/Coffee/g' coffee.txt 
+ love coffee
+ i love coffee
+ better than Coffee
+ coffee is good
+ I like coffee in the morning
+ it gives energy
+student@lin-ops:~/Bash2$ sed -i '3 s/tea/Coffee/g' coffee.txt 
+student@lin-ops:~/Bash2$ sed -e '3 s/tea/Coffee/g' coffee.txt 
+ love coffee
+ i love coffee
+ better than Coffee
+ coffee is good
+ I like coffee in the morning
+ it gives energy
+student@lin-ops:~/Bash2$ sed '2,$d' coffee.txt 
+ love coffee
+student@lin-ops:~/Bash2$ sed '3,$d' coffee.txt 
+ love coffee
+ i love coffee
+student@lin-ops:~/Bash2$ sed '3,3,$d' coffee.txt 
+sed: -e expression #1, char 4: unknown command: `,'
+student@lin-ops:~/Bash2$ sed '3d' coffee.txt 
+ love coffee
+ i love coffee
+ coffee is good
+ I like coffee in the morning
+ it gives energy
+student@lin-ops:~/Bash2$ cat coffee.txt 
+ love coffee
+ i love coffee
+ better than Coffee
+ coffee is good
+ I like coffee in the morning
+ it gives energy
+student@lin-ops:~/Bash2$ uniq -c coffee.txt 
+      1  love coffee
+      1  i love coffee
+      1  better than Coffee
+      1  coffee is good
+      1  I like coffee in the morning
+      1  it gives energy
+student@lin-ops:~/Bash2$ vim coffee.txt 
+student@lin-ops:~/Bash2$ cat coffee.txt 
+ love coffee
+ i love coffee
+ better than Coffee
+ coffee is good
+ I like coffee in the morning
+ it gives energy
+ i love coffee
+student@lin-ops:~/Bash2$ uniq -c coffee.txt 
+      1  love coffee
+      1  i love coffee
+      1  better than Coffee
+      1  coffee is good
+      1  I like coffee in the morning
+      1  it gives energy
+      1  i love coffee
+student@lin-ops:~/Bash2$ vim coffee.txt 
+student@lin-ops:~/Bash2$ uniq -c coffee.txt 
+      1  love coffee
+      1  i love coffee
+      1  better than Coffee
+      1  coffee is good
+      1  I like coffee in the morning
+      1  it gives energy
+      1  i love coffee
+      1  better than tea
+student@lin-ops:~/Bash2$ sort coffee.txt | uniq -c
+      1  I like coffee in the morning
+      1  better than Coffee
+      1  better than tea
+      1  coffee is good
+      2  i love coffee
+      1  it gives energy
+      1  love coffee
+student@lin-ops:~/Bash2$ sort coffee.txt | uniq -d
+ i love coffee
+student@lin-ops:~/Bash2$ sort coffee.txt | uniq -D
+ i love coffee
+ i love coffee
+student@lin-ops:~/Bash2$ sort coffee.txt | uniq -u
+ I like coffee in the morning
+ better than Coffee
+ better than tea
+ coffee is good
+ it gives energy
+ love coffee
+student@lin-ops:~/Bash2$ sort coffee.txt | uniq -i
+ I like coffee in the morning
+ better than Coffee
+ better than tea
+ coffee is good
+ i love coffee
+ it gives energy
+ love coffee
+student@lin-ops:~/Bash2$ alias -p
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias grep='grep --color=auto'
+alias l='ls -CF'
+alias la='ls -A'
+alias ll='ls -alF'
+alias ls='ls --color=auto'
+student@lin-ops:~/Bash2$ la
+beverages.txt  beverages2.txt  coffee.txt
+student@lin-ops:~/Bash2$ ll
+total 20
+drwxrwxr-x  2 student student 4096 Aug  3 14:07 ./
+drwxr-xr-x 21 student student 4096 Aug  3 14:07 ../
+-rw-rw-r--  1 student student  161 Aug  3 13:24 beverages.txt
+-rw-rw-r--  1 student student  161 Aug  3 13:27 beverages2.txt
+-rw-rw-r--  1 student student  143 Aug  3 14:07 coffee.txt
+student@lin-ops:~/Bash2$ vim cond.bin
+student@lin-ops:~/Bash2$ vim cond.sh
+student@lin-ops:~/Bash2$ chmod +x cond.sh 
+student@lin-ops:~/Bash2$ ./cond.sh 
+/etc/passwd exist
+student@lin-ops:~/Bash2$ ll
+total 24
+drwxrwxr-x  2 student student 4096 Aug  3 14:26 ./
+drwxr-xr-x 21 student student 4096 Aug  3 14:26 ../
+-rw-rw-r--  1 student student  161 Aug  3 13:24 beverages.txt
+-rw-rw-r--  1 student student  161 Aug  3 13:27 beverages2.txt
+-rw-rw-r--  1 student student  143 Aug  3 14:07 coffee.txt
+-rwxrwxr-x  1 student student  229 Aug  3 14:26 cond.sh*
+student@lin-ops:~/Bash2$ 
