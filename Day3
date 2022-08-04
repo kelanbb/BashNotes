@@ -1,1 +1,267 @@
 wow
+
+VARIABLES_____________________________________________________________________________________________________________________________
+<varname>=<value> // cannot have spaces\
+reference w a $
+echo $<varname>
+
+
+SCRIPT ________________________________________________________________________________________________________________________________
+when running a script can pass args by putting space after name
+ex ./spec.sh This is a test of the arguments
+  This, is, a ,test, of, the, arguments, are the arguments
+
+spec.sh #========================================================================================
+#!/bin/bash
+
+echo "Number of arguments passed: $#" 
+echo "Script name is $0"
+echo "The 2nd arg passed is: $2"
+echo "Arguments passed to script are: $*"
+echo "Exit status of last command that executed : $?" #this is the previous command for $_
+echo "Last arg provie of previous comand: $_"
+echo "PID of current shell is : $$"
+echo "Flas are set in the shell $-"
+
+#=------RUN SCRIPT----------
+student@lin-ops:~/Bash3$ ./spec.sh This is a test of the arguments
+Number of arguments passed: 7
+Script name is ./spec.sh
+The 2nd arg passed is: is
+Arguments passed to script are: This is a test of the arguments
+Exit status of last command that executed : 0
+Last arg provie of previous comand: Exit status of last command that executed : 0
+PID of current shell is : 325
+Flas are set in the shell hB
+#==================================================================================================
+
+FUNCTIONS________________
+
+Declare functions:
+
+  function <functionname> {
+  }
+ --or--
+  somefun(){
+  }
+
+#need to call functions later after made them
+somefun
+fun.sh #---------------------------------
+  1 #!/bin/bash
+  2 #This is a basic function
+  3 
+  4 function print_somefun {
+  5 echo Test function
+  6 }
+  7 
+  8 
+  9 somefun () {
+ 10 echo This is some function
+ 11 }
+ 12 
+ 13 somefun
+-------------RUN SCRIPT----------------------
+student@lin-ops:~/Bash3$ ./script1.sh 
+This is some function
+#++++==========================================================================================
+
+FUNCTION POSITIONAL PARAMATERS--------------------------------------
+
+modified fun.sh, uses passed values-------------------
+  1 #!/bin/bash
+  2 #This is a basic function
+  3 
+  4 function print_somefun {
+  5 echo $2
+  6 }
+  7 
+  8 
+  9 somefun () {
+ 10 echo $1
+ 11 }
+ 12 
+ 13 somefun
+ 14 print_somefun
+ 
+-------------RUN SCRIOT-----
+student@lin-ops:~/Bash3$ ./script1.sh Hello World
+
+
+student@lin-ops:~/Bash3$                              #since nothing pased to functions in scriot, didnt print
+
+
+---------------modified fun that passes args to functions
+  1 #!/bin/bash
+  2 #This is a basic function
+  3 
+  4 function print_somefun {
+  5 echo $2
+  6 }
+  7 
+  8 
+  9 somefun () {
+ 10 echo $1
+ 11 }
+ 12 
+ 13 somefun $1 $2
+ 14 print_somefun $2
+ 
+ run script--------------------
+student@lin-ops:~/Bash3$ ./script1.sh Hello World
+Hello
+
+student@lin-ops:~/Bash3$ 
+#sicne inside func $2 would be 2nd arg, not something names $2 that was passed to it, print_somefun printed nothing bc of that
+
+MODIFIED fun.sh again to have proper # of args passed to make echo work w $vars
+  1 #!/bin/bash
+  2 #This is a basic function
+  3 
+  4 function print_somefun {
+  5 echo $2
+  6 }
+  7 
+  8 
+  9 somefun () {
+ 10 echo $1
+ 11 }
+ 12 
+ 13 somefun $1 $2
+ 14 print_somefun $2 $1
+-------------RUN SCRIPT--------------------
+student@lin-ops:~/Bash3$ ./script1.sh Hello World
+Hello
+Hello
+---------------------
+
+
+NEW FINCTION EXAMPLE
+  1 #!/bin/bash
+  2 
+  3 lines_in_file() {
+  4    cat $1 | wc -l
+  5 }
+  6 
+  7 num_lines=$( lines_in_file $1 )
+  8 
+  9 echo The file $1 has $num_lines lines in it
+ 10 echo Good day sir.
+ 11 
+ -------RUN SCRIPt-------------------
+ student@lin-ops:~/Bash3$ ./fun.sh /etc/passwd
+The file /etc/passwd has 39 lines in it
+Good day sir.
+==================================================================
+
+FUNCTION 2 EX
+  1 #!/bin/bash
+  2 
+  3 fun=$(echo test of fun)
+  4 
+  5 function f1 {
+  6    echo Hello I\'m function 1
+  7    echo "This is with doucle quotes $fun"
+  8    echo 'this is with since quotes $fun'
+  9    echo this is with no quotes $fun
+ 10    echo bye
+ 11 }
+ 12 
+ 13 function f2 { echo Hello I\'m function 2;echo  Bye Bye; }
+ 14 f3 () {
+ 15    echo Hello I\'m function 3
+ 16    echo byee
+ 17 }
+ 18 f4 () { echo Hello I\'m function 4; echo bye bye;}
+ 19 
+ 20 #Call functions
+ 21 f1
+ 22 f2
+ 23 f3
+ 24 f4
+
+
+
+----RUN SCRIPT------------------------------
+student@lin-ops:~/Bash3$ vim wow.sh
+student@lin-ops:~/Bash3$ ./wow.sh 
+Hello I'm function 1
+This is with doucle quotes test of fun
+this is with since quotes $fun
+this is with no quotes test of fun
+bye
+Hello I'm function 2
+Bye Bye
+Hello I'm function 3
+byee
+Hello I'm function 4
+bye bye
+
+==================================================================
+
+can declare function in command line--------------
+student@lin-ops:~/Bash3$ my_function () { echo "This is my function"; }
+student@lin-ops:~/Bash3$ my_function 
+This is my function
+
+
+VARIABLE SUBSITUTION #----------------------------------------------
+
+  1 #!/bin/bash
+  2 
+  3 echo ${myVariable:-100}
+  4 echo "1. :- The valof of myVariable is ${myVariable}"
+  5 
+  6 #unset myvar
+  7 unset myVariable
+  8 
+  9 echo ${myVariable:="OohRah"}
+ 10 echo "2. := Value of myVariable is ${myVariable}"
+ 11 
+ 12 #unset myvar
+ 13 unset myVariable
+ 14 
+ 15 echo ${myVariable:+"OohRah"}
+ 16 echo "3. :+ Value of myVariable is ${myVariable}"
+ 17 
+ 18 #unset myvar
+ 19 unset myVariable
+ 20 
+ 21 echo ${myVariable:+"yuttuy"}
+ 22 echo "4. :+ Value of myVariable is ${myVariable}"
+ 23 
+ 24 #unset myvar
+ 25 unset myVariable
+ 26 
+ 27 echo ${myVariable:?"Message"}
+ 28 echo "5. :? Value of myVariable is ${myVariable}"
+--------------------output------------
+100
+1. :- The valof of myVariable is 
+OohRah
+2. := Value of myVariable is OohRah
+
+3. :+ Value of myVariable is 
+
+4. :+ Value of myVariable is 
+./testscript.sh: line 27: myVariable: Message
+=======================================================================
+
+if statemetns:
+
+  1 #!/bin/bash
+  2 
+  3 function test_shadow () {
+  4 if [ -e /etc/shadow ]; # -e is logical opertor to see if exists, this is seeing is file exists
+  5 then
+  6    echo "shadow exists"
+  7 else
+  8    echo "shadow no found"
+  9 fi
+ 10 }
+ 11 test_shadow
+ 
+ ======================================================================
+
+
+
