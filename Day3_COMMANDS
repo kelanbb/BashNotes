@@ -1,0 +1,152 @@
+student@lin-ops:~$ mkdir Bash3
+student@lin-ops:~$ cd 
+.cache/    .gnupg/    .msf4/     CCCC/      Documents/ Pictures/  Videos/    
+.config/   .local/    Bash2/     CUT/       Downloads/ Public/    peda/      
+.dbus/     .mozilla/  Bash3/     Desktop/   Music/     Templates/ 
+student@lin-ops:~$ cd Bash3
+student@lin-ops:~/Bash3$ clear
+
+student@lin-ops:~/Bash3$ var_a='Hello World"
+> ^C
+student@lin-ops:~/Bash3$ var_a='Hello World'
+student@lin-ops:~/Bash3$ echo $var_a
+Hello World
+student@lin-ops:~/Bash3$ vim spec.sh
+student@lin-ops:~/Bash3$ chmod spec.sh 
+chmod: missing operand after ‘spec.sh’
+Try 'chmod --help' for more information.
+student@lin-ops:~/Bash3$ chmod +x spec.sh 
+student@lin-ops:~/Bash3$ ./spec.sh This is a test of the arguments
+Number of arguments passed: 7
+Script name is ./spec.sh
+The 2nd arg passed is: is
+Arguments passed to script are: This is a test of the arguments
+Exit status of last command that executed : 0
+Last arg provie of previous comand: Exit status of last command that executed : 0
+PID of current shell is : 325
+Flas are set in the shell hB
+student@lin-ops:~/Bash3$ vim spec.sh
+student@lin-ops:~/Bash3$ vim script1.sh
+student@lin-ops:~/Bash3$ chmod +x script1.sh 
+student@lin-ops:~/Bash3$ file script1.sh 
+script1.sh: Bourne-Again shell script, ASCII text executable
+student@lin-ops:~/Bash3$ ./script1.sh 
+./script1.sh: line 5: syntax error near unexpected token `echo'
+./script1.sh: line 5: `echo Test function'
+student@lin-ops:~/Bash3$ vim script1.sh
+student@lin-ops:~/Bash3$ ./script1.sh 
+./script1.sh: line 5: syntax error near unexpected token `echo'
+./script1.sh: line 5: `echo 'Test function''
+student@lin-ops:~/Bash3$ vim script1.sh
+student@lin-ops:~/Bash3$ ./script1.sh 
+This is some function
+student@lin-ops:~/Bash3$ vim script1.sh
+student@lin-ops:~/Bash3$ vim script1.sh
+student@lin-ops:~/Bash3$ ./script1.sh 
+This is some function
+Test function
+student@lin-ops:~/Bash3$ vim script1.sh
+student@lin-ops:~/Bash3$ ./script1.sh 
+Test function
+student@lin-ops:~/Bash3$ vim script1.sh
+student@lin-ops:~/Bash3$ ./script1.sh Hello World
+
+
+student@lin-ops:~/Bash3$ vim script1.sh
+student@lin-ops:~/Bash3$ ./script1.sh Hello World
+Hello
+
+student@lin-ops:~/Bash3$ vim script1.sh
+student@lin-ops:~/Bash3$ ./script1.sh Hello World
+Hello
+Hello
+student@lin-ops:~/Bash3$ vim script1.sh
+student@lin-ops:~/Bash3$ vim script1.sh
+student@lin-ops:~/Bash3$ vim fun.sh
+student@lin-ops:~/Bash3$ chmod +x fun.sh 
+student@lin-ops:~/Bash3$ ./fun.sh 
+./fun.sh: line 7: syntax error near unexpected token `('
+./fun.sh: line 7: `num_lines=$ ( lines_in_file $1 )'
+student@lin-ops:~/Bash3$ ./fun.sh passwd
+./fun.sh: line 7: syntax error near unexpected token `('
+./fun.sh: line 7: `num_lines=$ ( lines_in_file $1 )'
+student@lin-ops:~/Bash3$ vim fun.sh
+student@lin-ops:~/Bash3$ ./fun.sh passwd
+./fun.sh: line 9: syntax error near unexpected token `echo'
+./fun.sh: line 9: `echo The file $1 has $num_lines lines in it'
+student@lin-ops:~/Bash3$ vim fun.sh
+student@lin-ops:~/Bash3$ ./fun.sh passwd
+./fun.sh: line 9: syntax error near unexpected token `echo'
+./fun.sh: line 9: `echo The file $1 has $num_lines lines in it'
+student@lin-ops:~/Bash3$ vim fun.sh
+student@lin-ops:~/Bash3$ ./fun.sh passwd
+./fun.sh: line 9: syntax error near unexpected token `echo'
+./fun.sh: line 9: `echo The file $1 has $num_lines lines in it'
+student@lin-ops:~/Bash3$ vim fun.sh
+student@lin-ops:~/Bash3$ ./fun.sh passwd
+./fun.sh: line 9: syntax error near unexpected token `echo'
+./fun.sh: line 9: `echo The file $1 has $num_lines lines in it'
+student@lin-ops:~/Bash3$ vim fun.sh
+student@lin-ops:~/Bash3$ ./fun.sh passwd
+cat: passwd: No such file or directory
+The file passwd has 0 lines in it
+Good day sir.
+student@lin-ops:~/Bash3$ ./fun.sh /etc/passwd
+The file /etc/passwd has 39 lines in it
+Good day sir.
+student@lin-ops:~/Bash3$ vim fun.sh
+student@lin-ops:~/Bash3$ vim wow.sh
+student@lin-ops:~/Bash3$ chmod +x wow.sh 
+student@lin-ops:~/Bash3$ ./wow.sh 
+student@lin-ops:~/Bash3$ vim wow.sh
+student@lin-ops:~/Bash3$ ./wow.sh 
+Hello I'm function 1
+Bye
+Hello I'm function 2
+Bye Bye
+Hello I'm function 3
+byee
+Hello I'm function 4
+bye bye
+student@lin-ops:~/Bash3$ my_function () { echo "This is my function./wow/sh"; }
+student@lin-ops:~/Bash3$ my_function 
+This is my function./wow/sh
+student@lin-ops:~/Bash3$ my_function () { echo "This is my function"; }
+student@lin-ops:~/Bash3$ my_function 
+This is my function
+student@lin-ops:~/Bash3$ vim wow.sh
+student@lin-ops:~/Bash3$ vim wow.sh
+student@lin-ops:~/Bash3$ ./wow.sh 
+Hello I'm function 1
+This is with doucle quotes test of fun
+this is with since quotes $fun
+this is with no quotes test of fun
+bye
+Hello I'm function 2
+Bye Bye
+Hello I'm function 3
+byee
+Hello I'm function 4
+bye bye
+student@lin-ops:~/Bash3$ vim wow.sh
+student@lin-ops:~/Bash3$ vim testscript.sh
+student@lin-ops:~/Bash3$ chmod +x testscript.sh 
+student@lin-ops:~/Bash3$ ./testscript.sh 
+100
+1. :- The valof of myVariable is 
+OohRah
+2. := Value of myVariable is OohRah
+
+3. :+ Value of myVariable is 
+
+4. :+ Value of myVariable is 
+./testscript.sh: line 27: myVariable: Message
+student@lin-ops:~/Bash3$ vim testscript.sh
+student@lin-ops:~/Bash3$ vim testshadow.sh
+student@lin-ops:~/Bash3$ chmod +x testshadow.sh 
+student@lin-ops:~/Bash3$ ./testshadow.sh 
+shadow exists
+student@lin-ops:~/Bash3$ vim testshadow.sh
+student@lin-ops:~/Bash3$ 
+
+
