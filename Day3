@@ -263,5 +263,82 @@ if statemetns:
  
  ======================================================================
 
+=====================================================================
+========================================================================
+11. 
+// to take offend of list or string whatever, can reverse string and cut it and reverse back or something, printf, or awk
+// %s prints file sizze in bytes....???????????? how it formats it
+// man printf an show a lot of farmats to print in
+    %h will prin a filepath of file wo file
+  find $HOME -iname "*.bin" -printf "%h\n" | sort -u | 
+  
+  method -2-
+  
+  find $HOME -type f -iname "*.bin" | rev | cut -d/ -f2- | rev | sort -u  #reverse, only take 2nd dield to end and reverse again, effectively removing last entry
+  
+  method -3-
+  # FS is a field seperator....
+  #awk OFS and FS can be fidderent things
+  find $HOME -type f -iname "*.bin" | awk 'BEGIN{FS="/";OFS="/"}{NF=NF-1; print $0}
 
 
+12.
+  # tail -1 can give last line in file
+  #awk -v lets you use global var in awk, like the ones being pased
+    
+  tail -1 passwd | awk -F: -v user="$2" -v id="$3" 'BEGIN {OFS=":"} {$1=$user} /    # want to set uname to the var set before
+  {$3=id;$4=id} {$6="/home/"user} {$NF="/bin/bash"} {print $0}' >> $1                      #NF="whatever" will set last value to whatever
+  
+  -or-
+  
+  name=$2
+  guid=$3
+  file=$1
+  cmd=$(tail -1 $file)
+  # can use and assign these variables instead of doing it in awk, can do this to do more traditional scripting
+ echo $cmd | awk -F: -v "awkname=$name" -v "awkguid=$guid" 'BEGIN {OFS=":"} {$1=awkname} {$3=awkguid} {$4=awkguid} {$6="/home/"awkname} {$NF="/bin/bash"} {print $0}' >> $file
+ 
+ 13.
+  #usually if want to md5sum somthing, do it first then pipe it or command subsitution........
+  md5sum $(find /bin /sbin /usr/bin /usr/sbin -executables -type f | sort -u | head -10 | tail -1 | cut -d" " -f1
+  -oro-
+  md5sum $(find /bin /sbin /usr/bin /usr/sbin -executables -type f | sort -u | sed -n 10p
+  -or-
+  md5sum $(find /bin /sbin /usr/bin /usr/sbin -executables -type f | sort -u | sed '10q:d'
+  -or-
+ md5sum $(find /bin /sbin /usr/bin /usr/sbin -executables -type f | sort -u | awk 'NR==10 {print}'
+   
+   -or-
+   
+  A=$(find..d.wd.w.dw.dw.d.wd.wd.w.)
+  md5sum $A
+  
+  14.
+    sort -t: -k4 -n /etc/passwd | head -10 | tail -1 | cut -d: -f6 | md5sum | cut -d' ' -f1
+    
+  15.
+    #echo "<code>" > code.sh can write code to file
+    md5sum $(find{/bin,/etc,/var} -maxdepth 3 ! -type p) 
+    >good.txt #ssend find hash to good txt
+    2>bad.txt      #send errors to bad.txt30.
+    a=$(cat good.txt | wc -l)
+    b=$(cat bad.txt | grep "directory" | wc -l)
+    echo Successfully Hashed Files: $a ; echo Unsuccessfully Hashed Directories $b
+   
+   -or-
+   
+   md5sum $(find /bin /etc /var -maxdepth 3) 2>err.txt 1>good.txt
+    echo "Uneefesfesfsefs Fiels: "$(wc -l good.txt | awk '{print $1}')
+    srdgd
+    g
+    drg
+    
+    
+   
+   
+   
+   
+   
+   
+   
+   
