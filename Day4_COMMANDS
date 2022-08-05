@@ -1,0 +1,231 @@
+
+student@lin-ops:~/Bash3$ seq 15
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+student@lin-ops:~/Bash3$ seq 1 5
+1
+2
+3
+4
+5
+student@lin-ops:~/Bash3$ echo $(seq 1 5)
+1 2 3 4 5
+student@lin-ops:~/Bash3$ #command subsitution negates newline char
+student@lin-ops:~/Bash3$  mkdir ../Bash4 && cd ../Bash4
+student@lin-ops:~/Bash4$ ls
+student@lin-ops:~/Bash4$ vim example1.sh
+student@lin-ops:~/Bash4$ chmod +x ./example1.sh 
+student@lin-ops:~/Bash4$ ./example1.sh 
+Make a choice 1 2 or 3: 
+1
+one
+student@lin-ops:~/Bash4$ ./example1.sh 
+Make a choice 1 2 or 3: 
+4
+other
+student@lin-ops:~/Bash4$ ./example1.sh 
+Make a choice 1 2 or 3: 
+g
+other
+student@lin-ops:~/Bash4$ vim example1.sh
+student@lin-ops:~/Bash4$ vim example1.sh 1
+2 files to edit
+student@lin-ops:~/Bash4$ ./example1.sh 1
+Make a choice 1 2 or 3: 
+1
+one
+student@lin-ops:~/Bash4$ ./example1.sh 
+Make a choice 1 2 or 3: 
+2
+two
+
+student@lin-ops:~/Bash4$ md5sum /home/student/
+md5sum: /home/student/: Is a directory
+student@lin-ops:~/Bash4$ echo "this is a test" > touch md5sumtest
+student@lin-ops:~/Bash4$ cat md5dumsest
+cat: md5dumsest: No such file or directory
+student@lin-ops:~/Bash4$ ls
+example1.sh  touch
+student@lin-ops:~/Bash4$ echo "this is a test" | touch md5sumtest
+student@lin-ops:~/Bash4$ ls
+example1.sh  md5sumtest  touch
+student@lin-ops:~/Bash4$ rm touch 
+student@lin-ops:~/Bash4$ echo "this is a test" > md5sumtest
+student@lin-ops:~/Bash4$ cat md5sumtest 
+this is a test
+student@lin-ops:~/Bash4$ echo /home/student/ | md5sum
+9cfd108e3a894bda7ef5f725921ecbe7  -
+student@lin-ops:~/Bash4$ md5sum "/home/student/"
+md5sum: /home/student/: Is a directory
+student@lin-ops:~/Bash4$ md5sum md5sumtest
+e19c1283c925b3206685ff522acfe3e6  md5sumtest
+student@lin-ops:~/Bash4$ echo /home/student
+/home/student
+student@lin-ops:~/Bash4$ echo md5sumtest 
+md5sumtest
+student@lin-ops:~/Bash4$ echo md5sumtest | md5sum
+8d1bf5288fead03c983ce5dd6482590d  -
+student@lin-ops:~/Bash4$ # notice different md5 is because one is md5 the string of the name of file and other is doing file md5
+student@lin-ops:~/Bash4$ 
+
+student@lin-ops:~/Bash4$ vim spec\ parm
+student@lin-ops:~/Bash4$ chmod +x spec\ parm 
+student@lin-ops:~/Bash4$ ./spec\ parm 
+2429
+./spec parm
+usage: bash ./spec parm arg1, arg2, arg3
+student@lin-ops:~/Bash4$ ./spec\ parm 1 2 3
+2430
+./spec parm
+1, 2, 3
+student@lin-ops:~/Bash4$ 
+student@lin-ops:~/Bash4$ vim spec\ parm
+student@lin-ops:~/Bash4$ vim whileloop.py
+student@lin-ops:~/Bash4$ chmod +x whileloop.py 
+student@lin-ops:~/Bash4$ ./whileloop.py 
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+student@lin-ops:~/Bash4$ vim whileloop.py
+student@lin-ops:~/Bash4$ vim untilloop.py
+student@lin-ops:~/Bash4$ chmod +x untilloop.py 
+student@lin-ops:~/Bash4$ ./untilloop.py 
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+student@lin-ops:~/Bash4$ vim forloop.py
+student@lin-ops:~/Bash4$ chmod +x forloop.py 
+student@lin-ops:~/Bash4$ ./forloop.py 
+./forloop.py: line 6: Mile: command not found
+./forloop.py: line 6: Lola: command not found
+./forloop.py: line 6: Kim: command not found
+./forloop.py: line 6: Doug: command not found
+./forloop.py: line 6: Sherrly: command not found
+./forloop.py: line 6: Vince: command not found
+./forloop.py: line 6: Deez: command not found
+student@lin-ops:~/Bash4$ vim forloop.py
+student@lin-ops:~/Bash4$ ./forloop.py 
+Mile
+Lola
+Kim
+Doug
+Sherrly
+Vince
+Deez
+All Done
+student@lin-ops:~/Bash4$ vim forloop.py
+student@lin-ops:~/Bash4$ vim forloop.py
+student@lin-ops:~/Bash4$ vim range.sh
+student@lin-ops:~/Bash4$ chmod +x range.sh 
+student@lin-ops:~/Bash4$ ./range.sh 
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+student@lin-ops:~/Bash4$ cat range.sh 
+#!/bin/bash
+
+for value in {1..20}
+do
+   echo $value
+done
+student@lin-ops:~/Bash4$ vim range.sh
+student@lin-ops:~/Bash4$ ./range.sh 
+1
+3
+5
+7
+9
+11
+13
+15
+17
+19
+student@lin-ops:~/Bash4$ cat range.sh 
+#!/bin/bash
+
+for value in {1..20..2}
+do
+   echo $value
+done
+student@lin-ops:~/Bash4$ vim select.sh
+student@lin-ops:~/Bash4$ chmod +x select.sh 
+student@lin-ops:~/Bash4$ ./s
+bash: ./s: No such file or directory
+student@lin-ops:~/Bash4$ ./select.sh 
+./select.sh: line 3: names: command not found
+student@lin-ops:~/Bash4$ vim select.sh
+student@lin-ops:~/Bash4$ ./select.sh 
+./select.sh: line 3: names: command not found
+student@lin-ops:~/Bash4$ vim select.sh
+student@lin-ops:~/Bash4$ ./select.sh 
+1) Nicki      3) Rollie	    5) Nkenesliw  7) Folkawrr
+2) Jamie      4) Rotty	    6) Sam	  8) Quit
+#? 1
+Hello Nicki
+#? 2
+Hello Jamie
+#? 4
+Hello Rotty
+#? 7
+Hello Folkawrr
+#? 8
+student@lin-ops:~/Bash4$ cat select.sh 
+#!/bin/bash
+
+names='Nicki Jamie Rollie Rotty Nkenesliw Sam Folkawrr Quit'
+select name in $names
+do
+   if [[ $name == 'Quit' ]]
+      then
+         break
+   fi
+   echo Hello $name
+done
+student@lin-ops:~/Bash4$ 
+
+
