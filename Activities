@@ -1966,7 +1966,55 @@ function q1()
 
 
 
+cut
+-d = delimiter
 
+awk
+
+sed  //find and replace
+
+egrep
+-v = inverse
+-i ignore case
+-o only take out specific part of string
+-c suppress output, insread print count of matchinf lines
+-r recursively
+
+find
+-type 
+b blocl
+c char\
+...
+-exec execures something \;
+//if using exec for per file need exec and curly brackets...?
+
+-mtime and stuff
+
+sort
+-r
+-k
+
+uniq  //need to sort first
+
+touch
+-t modify time
+-d set date...
+
+if <> then
+elif <> then
+else
+fi
+
+tar
+-c creaqte
+-v verbose
+-z zip
+-vf create file.....?
+-x compress...uncomplress...?
+
+regex
+^ begginning of line
+$ end of line
 
 
 
